@@ -6,13 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freely - 新一代 AI 语音输入法</title>
     
-    <!-- 
-      注意：为了确保你在 GitHub Pages 上能立刻看到效果，
-      这里我暂时切回了 CDN 链接。
-      如果你已经上传了 assets 文件夹，请手动改回本地路径，
-      但一定要确保是 "assets/xxx" 而不是 "/assets/xxx" 
-    -->
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,15 +32,28 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'bounce-slow': 'bounce-slow 3s infinite',
                         'float': 'float 6s ease-in-out infinite',
+                        // --- 修复：添加了缺失的动画定义 ---
+                        'float-slow': 'float-slow 4s ease-in-out infinite',
+                        'wave': 'wave 1.2s ease-in-out infinite',
+                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
                         },
+                        'float-slow': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
                         'bounce-slow': {
                             '0%, 100%': { transform: 'translateY(-5%)' },
                             '50%': { transform: 'translateY(0)' }
+                        },
+                        // --- 修复：添加了 wave 声波动画的关键帧 ---
+                        wave: {
+                            '0%, 100%': { height: '20%' },
+                            '50%': { height: '100%' }
                         }
                     }
                 }
@@ -64,7 +70,7 @@
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 0; 
             pointer-events: none;
-            opacity: 0.5; /* 稍微调淡一点 */
+            opacity: 0.5;
         }
 
         section, nav, footer, .founder-chat-widget { position: relative; z-index: 10; }
@@ -95,23 +101,7 @@
                 margin-left: -25%;
             }
         }
-
-        /* 动画定义 */
-        @keyframes shake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
-        }
-        .animate-shake { animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both infinite; }
-
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
         
-        /* Slogan 渐变边框 */
         .slogan-box {
             background: linear-gradient(white, white) padding-box,
                         linear-gradient(to right, #2563eb, #f97316) border-box;
@@ -239,8 +229,7 @@
                         </div>
                     </div>
 
-                    <!-- Dynamic Avatar (已调整位置，靠下一点) -->
-                    <!-- 之前是 -mt-10，现在改成 mt-4，让它往下走 -->
+                    <!-- Dynamic Avatar -->
                     <div class="flex-1 flex flex-col items-center justify-center min-h-0 z-10 mt-4">
                         <div id="dynamic-avatar" class="relative w-64 h-64 flex items-center justify-center transition-all duration-700">
                             <div id="avatar-orb" class="w-48 h-48 rounded-full blur-2xl absolute transition-all duration-1000 bg-yellow-400/60"></div>
@@ -312,6 +301,7 @@
                     </span>
                     <i class="fa-solid fa-arrow-right-long text-slate-400 text-xl"></i>
                 </div>
+                <!-- 修复动画：现在 wave 定义了，中间的波纹会动了 -->
                 <div class="relative flex items-center px-1.5 py-1.5 rounded-full transition-all duration-500 bg-[#1a1a1a]/95 shadow-[0_0_15px_0px_rgba(244,63,94,0.5)] transform scale-125 cursor-pointer hover:scale-[1.35]">
                     <div class="pl-2 pr-1 flex items-center justify-center h-full min-h-[32px]">
                         <div class="flex flex-col gap-[3px] p-1">
@@ -321,8 +311,10 @@
                         </div>
                     </div>
                     <div class="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-rose-500">
+                        <!-- 修复动画：ping-slow 也被定义了 -->
                         <div class="absolute inset-0 rounded-full animate-ping-slow bg-white/20"></div>
                         <div class="flex items-center gap-[2px] h-5 overflow-hidden z-10">
+                            <!-- 修复动画：波纹跳动 -->
                             <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0s"></div>
                             <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.1s"></div>
                             <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.2s"></div>
@@ -390,8 +382,8 @@
             </div>
 
             <div class="flex-1 bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-3xl shadow-xl text-white flex flex-col items-center justify-center text-center">
-                <h3 class="text-2xl font-bold mb-2">加入内测群</h3>
-                <p class="text-slate-400 text-sm mb-4">参与软件贡献，一起完善软件</p>
+                <h3 class="text-2xl font-bold mb-2">内测用户们，快加入内测群！</h3>
+                <p class="text-slate-400 text-sm mb-4">你提需求我来实现。让我们一起让软件变得更好。</p>
                 <div class="bg-white p-2 rounded-xl w-40 h-40 flex items-center justify-center mb-6 overflow-hidden">
                     <img src="assets/wechat.jpg" alt="WeChat QR Code" class="w-full h-full object-contain">
                 </div>
@@ -400,10 +392,10 @@
         </div>
     </section>
 
-    <!-- Founder Chat Widget (Updated Text) -->
+    <!-- Founder Chat Widget -->
     <div class="fixed bottom-6 right-4 z-50 group founder-chat-widget flex flex-col items-end">
         <div class="mb-3 bg-white dark:bg-slate-800 px-4 py-3 rounded-2xl rounded-tr-sm shadow-xl shadow-brand-900/10 border border-slate-100 dark:border-slate-700 transform transition-all duration-300 origin-bottom-right scale-100 w-48">
-            <p class="text-xs font-bold text-brand-600 dark:text-brand-400 mb-1">👋 加入内测群</p>
+            <p class="text-xs font-bold text-brand-600 dark:text-brand-400 mb-1">👋 内测er们，速加入内测群~</p>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-tight">一起完善软件，你提建议我实现！</p>
         </div>
         <div class="relative cursor-pointer transition-transform hover:scale-105 active:scale-95">
@@ -413,8 +405,9 @@
              </div>
              <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full z-20"></div>
         </div>
+        
         <div class="absolute bottom-20 right-0 bg-white p-2 rounded-xl shadow-2xl border border-slate-100 transform translate-y-10 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 origin-bottom-right w-40 h-40 z-50 pointer-events-none group-hover:pointer-events-auto">
-            <img src="assets/wechat.jpgg" alt="QR" class="w-full h-full object-contain">
+            <img src="assets/wechat.jpg" alt="QR" class="w-full h-full object-contain">
         </div>
     </div>
 
@@ -524,10 +517,8 @@
         const toggleMobile = document.getElementById('theme-toggle-mobile');
         const html = document.documentElement;
         
-        // 自动判定夜间模式 (晚7点 - 早6点)
         function checkTimeForTheme() {
             const hour = new Date().getHours();
-            // 如果本地没有手动设置过，则使用时间判断
             if (!localStorage.theme) {
                 if (hour >= 19 || hour < 6) {
                     html.classList.add('dark');
@@ -535,7 +526,6 @@
                     html.classList.remove('dark');
                 }
             } else {
-                // 如果有设置，遵循设置
                 if(localStorage.theme === 'dark') html.classList.add('dark');
             }
         }
@@ -549,11 +539,9 @@
         toggle.addEventListener('click', switchTheme);
         if(toggleMobile) toggleMobile.addEventListener('click', switchTheme);
         
-        // 初始化
         checkTimeForTheme();
         window.addEventListener('load', () => { initParticles(); animate(); });
 
-        // 打字机
         const typeText = document.getElementById('typewriter');
         const words = ["Freely", "Boldly", "Openly"];
         let wordIdx = 0, charIdx = 0, isDeleting = false;
@@ -570,14 +558,13 @@
 
         window.addEventListener('scroll', () => { document.querySelectorAll('.reveal').forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 150) r.classList.add('active'); }); });
 
-        // --- 3. Avatar 情感与中文文案逻辑 (已更新) ---
+        // --- 3. Avatar 情感与中文文案逻辑 ---
         const avatarOrb = document.getElementById('avatar-orb');
         const avatarFace = document.getElementById('avatar-face');
         const avatarEyes = document.getElementById('avatar-eyes');
         const avatarMouth = document.getElementById('avatar-mouth');
         const dynamicText = document.getElementById('dynamic-text');
 
-        // 这里更新了中文文案
         const emotions = [
             { 
                 color: 'bg-yellow-400/60', 
@@ -634,4 +621,3 @@
     </script>
 </body>
 </html>
-
