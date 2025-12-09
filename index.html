@@ -1,20 +1,24 @@
 <!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
 
-<html class="scroll-smooth" lang="zh-CN">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Freely - 新一代 AI 语音输入法</title>
-<meta content="Freely - 支持实时转写、情感识别与本地隐私保护的 AI 语音输入法。" name="description"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="assets\css2.css" rel="stylesheet"/>
-<!-- FontAwesome -->
-<link href="assets\all.min.css" rel="stylesheet"/>
-<!-- Tailwind -->
-<script src="assets\resource_813532976948694558.js.css"></script>
-<script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freely - 新一代 AI 语音输入法</title>
+    <meta name="description" content="Freely - 支持实时转写、情感识别与本地隐私保护的 AI 语音输入法。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -46,7 +50,8 @@
             }
         }
     </script>
-<style>
+
+    <style>
         body {
             font-family: 'Noto Sans SC', sans-serif;
             overflow-x: hidden;
@@ -124,286 +129,312 @@
                         linear-gradient(to right, #2563eb, #f97316) border-box;
         }
     </style>
-<!-- 1. 统计代码 -->
-<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"3OKEE8CvsITfxBGz",ck:"3OKEE8CvsITfxBGz", autoTrack:true})</script>
+
+    <!-- 1. 统计代码 -->
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"3OKEE8CvsITfxBGz",ck:"3OKEE8CvsITfxBGz", autoTrack:true})</script>
 </head>
+
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
-<!-- 全屏粒子背景 -->
-<canvas id="particle-canvas"></canvas>
-<!-- Navigation -->
-<nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm">
-<div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-<div class="flex items-center gap-3 font-serif font-bold text-2xl tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">
-<div class="w-9 h-9 bg-brand-600 text-white rounded-lg flex items-center justify-center text-sm shadow-lg transform hover:rotate-12 transition-transform">
-<i class="fa-solid fa-microphone-lines"></i>
-</div>
+
+    <!-- 全屏粒子背景 -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3 font-serif font-bold text-2xl tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="w-9 h-9 bg-brand-600 text-white rounded-lg flex items-center justify-center text-sm shadow-lg transform hover:rotate-12 transition-transform">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                </div>
                 Freely.
             </div>
-<div class="hidden md:flex items-center gap-8 text-sm font-medium">
-<a class="hover:text-brand-600 transition-colors" href="#features">功能</a>
-<button class="hover:text-brand-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" id="theme-toggle">
-<i class="fa-solid fa-circle-half-stroke text-lg"></i>
-</button>
-<a class="px-6 py-2 bg-slate-900 text-white rounded-full hover:bg-brand-600 transition-all shadow-lg dark:bg-white dark:text-slate-900 hover:-translate-y-0.5" href="#download">
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#features" class="hover:text-brand-600 transition-colors">功能</a>
+                <button id="theme-toggle" class="hover:text-brand-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+                </button>
+                <a href="#download" class="px-6 py-2 bg-slate-900 text-white rounded-full hover:bg-brand-600 transition-all shadow-lg dark:bg-white dark:text-slate-900 hover:-translate-y-0.5">
                     立即下载
                 </a>
-</div>
-<!-- Mobile Menu Toggle -->
-<div class="md:hidden flex items-center">
-<button class="w-8 h-8 flex items-center justify-center text-slate-600 dark:text-slate-300" id="theme-toggle-mobile">
-<i class="fa-solid fa-circle-half-stroke text-lg"></i>
-</button>
-</div>
-</div>
-</nav>
-<!-- Hero Section -->
-<section class="relative pt-32 pb-16 lg:pt-48 lg:pb-32 px-6 text-center">
-<!-- 小字保留 -->
-<div class="flex justify-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-4 animate-pulse">
-<span>实时转写</span><span class="text-brand-600">•</span>
-<span>情感识别</span><span class="text-brand-600">•</span>
-<span>模型养成</span>
-</div>
-<!-- Main Title -->
-<h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-8 leading-none drop-shadow-sm">
+            </div>
+             <!-- Mobile Menu Toggle -->
+             <div class="md:hidden flex items-center">
+                <button id="theme-toggle-mobile" class="w-8 h-8 flex items-center justify-center text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 lg:pt-48 lg:pb-32 px-6 text-center">
+        
+        <!-- 小字保留 -->
+        <div class="flex justify-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-4 animate-pulse">
+            <span>实时转写</span><span class="text-brand-600">•</span>
+            <span>情感识别</span><span class="text-brand-600">•</span>
+            <span>模型养成</span>
+        </div>
+        
+        <!-- Main Title -->
+        <h1 class="text-6xl md:text-8xl font-serif font-black tracking-tighter mb-8 leading-none drop-shadow-sm">
             Speak <span class="text-brand-600 cursor" id="typewriter">Freely</span>
-</h1>
-<!-- 2. 新增：美化的 Slogan 区域 -->
-<div class="flex justify-center mb-10">
-<div class="slogan-box rounded-full px-6 py-2 md:px-8 md:py-3 shadow-xl backdrop-blur-md animate-float">
-<p class="text-sm md:text-lg font-medium bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
-<i class="fa-solid fa-wand-magic-sparkles text-brand-500 mr-2"></i>
+        </h1>
+
+        <!-- 2. 新增：美化的 Slogan 区域 -->
+        <div class="flex justify-center mb-10">
+            <div class="slogan-box rounded-full px-6 py-2 md:px-8 md:py-3 shadow-xl backdrop-blur-md animate-float">
+                <p class="text-sm md:text-lg font-medium bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
+                    <i class="fa-solid fa-wand-magic-sparkles text-brand-500 mr-2"></i>
                     新一代 AI 语音输入法，懂情绪，更懂你。
                 </p>
-</div>
-</div>
-<p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
-            让稍纵即逝的灵感成为永恒。<br/>
-<span class="text-sm text-slate-400 mt-2 block font-normal">Windows 客户端 v1.0.0 现已发布</span>
-</p>
-<div class="flex flex-col sm:flex-row justify-center gap-4 mb-20 relative z-20">
-<a class="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-bold shadow-xl shadow-brand-500/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2" href="https://gitee.com/fzfz666/freely/raw/master/Freely_0.1.3_x64-setup.exe">
-<i class="fa-brands fa-windows"></i> Windows 下载
+            </div>
+        </div>
+
+        <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+            让稍纵即逝的灵感成为永恒。<br>
+            <span class="text-sm text-slate-400 mt-2 block font-normal">Windows 客户端 v1.0.0 现已发布</span>
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20 relative z-20">
+            <a href="https://gitee.com/fzfz666/freely/raw/master/Freely_0.1.3_x64-setup.exe"
+                class="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-bold shadow-xl shadow-brand-500/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                <i class="fa-brands fa-windows"></i> Windows 下载
             </a>
-<a class="px-8 py-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-full font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2" href="#features">
+            <a href="#features"
+                class="px-8 py-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-full font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
                 了解更多
             </a>
-</div>
-<!-- Authentic UI Replication -->
-<div class="max-w-6xl mx-auto relative group">
-<div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-<div class="relative bg-slate-50 dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden text-left aspect-[16/10] md:aspect-[16/9] flex flex-col z-10">
-<!-- Title Bar -->
-<div class="h-10 bg-white/50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-700 flex items-center px-4 gap-2 flex-shrink-0 backdrop-blur-sm z-50">
-<div class="w-3 h-3 rounded-full bg-red-400"></div>
-<div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-<div class="w-3 h-3 rounded-full bg-green-400"></div>
-<div class="ml-auto text-xs font-mono text-slate-400 flex items-center gap-2">
-<i class="fa-solid fa-wifi text-green-500"></i> Connected
+        </div>
+
+        <!-- Authentic UI Replication -->
+        <div class="max-w-6xl mx-auto relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+
+            <div class="relative bg-slate-50 dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden text-left aspect-[16/10] md:aspect-[16/9] flex flex-col z-10">
+                <!-- Title Bar -->
+                <div class="h-10 bg-white/50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-700 flex items-center px-4 gap-2 flex-shrink-0 backdrop-blur-sm z-50">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                    <div class="ml-auto text-xs font-mono text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-wifi text-green-500"></i> Connected
                     </div>
-</div>
-<!-- Main Content (Mobile Scaled) -->
-<div class="flex-1 relative overflow-hidden flex flex-col mobile-scale-ui">
-<!-- Background Glows -->
-<div class="absolute inset-0 pointer-events-none">
-<div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full blur-[100px] opacity-30 bg-sky-200 dark:bg-sky-900"></div>
-<div class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full blur-[100px] opacity-30 bg-emerald-200 dark:bg-emerald-900"></div>
-</div>
-<!-- Stats Dashboard -->
-<div class="absolute top-8 left-8 z-20 w-[240px] flex flex-col gap-4">
-<div class="glass-card p-4 w-full">
-<div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Efficiency</div>
-<div class="flex items-baseline gap-2">
-<div class="text-4xl font-sans font-bold text-yellow-500 drop-shadow-sm">2.5x</div>
-<div class="text-[10px] font-bold text-slate-400">180 CPM</div>
-</div>
-<div class="text-[10px] text-emerald-600 mt-1 font-medium">Top 5% vs Typing</div>
-</div>
-<div class="glass-card p-4 w-full">
-<div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Daily Words</div>
-<div class="text-4xl font-sans font-bold text-slate-800 dark:text-white">1.2k</div>
-<div class="w-full bg-slate-200 h-1.5 mt-2 rounded-full overflow-hidden">
-<div class="bg-blue-500 h-full w-[60%]"></div>
-</div>
-</div>
-</div>
-<!-- Dynamic Avatar -->
-<div class="flex-1 flex flex-col items-center justify-center min-h-0 z-10 -mt-10">
-<div class="relative w-64 h-64 flex items-center justify-center transition-all duration-700" id="dynamic-avatar">
-<div class="w-48 h-48 rounded-full blur-2xl absolute transition-all duration-1000 bg-yellow-400/60" id="avatar-orb"></div>
-<div class="w-40 h-40 rounded-full bg-gradient-to-br from-yellow-300/80 to-orange-400/80 backdrop-blur-3xl border border-white/20 shadow-2xl flex items-center justify-center relative z-10 transition-all duration-1000 animate-bounce-slow" id="avatar-face">
-<div class="flex gap-8 absolute top-10 transition-all duration-500" id="avatar-eyes">
-<div class="w-4 h-8 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-y-50"></div>
-<div class="w-4 h-8 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-y-50"></div>
-</div>
-<div class="absolute bottom-8 w-12 h-4 border-b-4 border-white rounded-[50%] transition-all duration-500" id="avatar-mouth"></div>
-</div>
-</div>
-<div class="mt-8 max-w-lg text-center px-4">
-<p class="text-lg md:text-xl font-medium leading-relaxed text-slate-700 dark:text-slate-200 max-h-24 overflow-hidden">
+                </div>
+
+                <!-- Main Content (Mobile Scaled) -->
+                <div class="flex-1 relative overflow-hidden flex flex-col mobile-scale-ui">
+                    <!-- Background Glows -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full blur-[100px] opacity-30 bg-sky-200 dark:bg-sky-900"></div>
+                        <div class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full blur-[100px] opacity-30 bg-emerald-200 dark:bg-emerald-900"></div>
+                    </div>
+
+                    <!-- Stats Dashboard -->
+                    <div class="absolute top-8 left-8 z-20 w-[240px] flex flex-col gap-4">
+                        <div class="glass-card p-4 w-full">
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Efficiency</div>
+                            <div class="flex items-baseline gap-2">
+                                <div class="text-4xl font-sans font-bold text-yellow-500 drop-shadow-sm">2.5x</div>
+                                <div class="text-[10px] font-bold text-slate-400">180 CPM</div>
+                            </div>
+                            <div class="text-[10px] text-emerald-600 mt-1 font-medium">Top 5% vs Typing</div>
+                        </div>
+                        <div class="glass-card p-4 w-full">
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Daily Words</div>
+                            <div class="text-4xl font-sans font-bold text-slate-800 dark:text-white">1.2k</div>
+                            <div class="w-full bg-slate-200 h-1.5 mt-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-500 h-full w-[60%]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Avatar -->
+                    <div class="flex-1 flex flex-col items-center justify-center min-h-0 z-10 -mt-10">
+                        <div id="dynamic-avatar" class="relative w-64 h-64 flex items-center justify-center transition-all duration-700">
+                            <div id="avatar-orb" class="w-48 h-48 rounded-full blur-2xl absolute transition-all duration-1000 bg-yellow-400/60"></div>
+                            <div id="avatar-face" class="w-40 h-40 rounded-full bg-gradient-to-br from-yellow-300/80 to-orange-400/80 backdrop-blur-3xl border border-white/20 shadow-2xl flex items-center justify-center relative z-10 transition-all duration-1000 animate-bounce-slow">
+                                <div id="avatar-eyes" class="flex gap-8 absolute top-10 transition-all duration-500">
+                                    <div class="w-4 h-8 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-y-50"></div>
+                                    <div class="w-4 h-8 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-y-50"></div>
+                                </div>
+                                <div id="avatar-mouth" class="absolute bottom-8 w-12 h-4 border-b-4 border-white rounded-[50%] transition-all duration-500"></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 max-w-lg text-center px-4">
+                            <p class="text-lg md:text-xl font-medium leading-relaxed text-slate-700 dark:text-slate-200 max-h-24 overflow-hidden">
                                 "<span id="dynamic-text">Ideas are fleeting, but Freely makes them eternal.</span>"
                             </p>
-<div class="mt-4 flex justify-center">
-<button class="px-5 py-2.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-white/60 dark:border-slate-700 rounded-full shadow-lg flex items-center gap-3">
-<div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></div>
-<span class="text-slate-700 dark:text-slate-300 font-bold text-xs tracking-wide">LISTENING... 00:42</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Timeline -->
-<div class="h-32 flex-none flex gap-6 px-8 pb-8 z-20 flex items-end">
-<div class="glass-card flex-1 p-3 flex flex-col justify-end h-full">
-<div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1.5">24h Timeline</div>
-<div class="flex items-end justify-between gap-1 h-full w-full px-1">
-<div class="h-6 w-1.5 bg-slate-300/50 rounded-full"></div>
-<div class="h-8 w-1.5 bg-slate-300/50 rounded-full"></div>
-<div class="h-12 w-1.5 bg-amber-400 rounded-full opacity-80 animate-pulse"></div>
-<div class="h-10 w-1.5 bg-slate-300/50 rounded-full"></div>
-<div class="h-16 w-3 ring-2 ring-slate-400 ring-offset-2 rounded-full overflow-hidden flex flex-col-reverse bg-slate-100">
-<div class="h-[60%] bg-amber-400 w-full"></div>
-<div class="h-[40%] bg-blue-400 w-full"></div>
-</div>
-<div class="h-6 w-1.5 bg-slate-300/50 rounded-full"></div>
-<div class="h-1.5 w-1.5 bg-slate-200 rounded-full"></div>
-</div>
-</div>
-<div class="glass-card w-64 p-3 h-full flex flex-col justify-between">
-<div class="flex justify-between items-center mb-1">
-<div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Mood</div>
-<div class="text-[9px] text-emerald-600 font-bold bg-emerald-100 px-1.5 rounded-full">Top 3</div>
-</div>
-<div class="space-y-1.5 flex-1">
-<div>
-<div class="flex justify-between text-[9px] mb-0.5 text-slate-500 font-medium"><span>Happy</span><span>65%</span></div>
-<div class="w-full bg-slate-200 h-1 rounded-full overflow-hidden"><div class="h-full bg-amber-400 w-[65%]"></div></div>
-</div>
-<div>
-<div class="flex justify-between text-[9px] mb-0.5 text-slate-500 font-medium"><span>Focus</span><span>25%</span></div>
-<div class="w-full bg-slate-200 h-1 rounded-full overflow-hidden"><div class="h-full bg-blue-400 w-[25%]"></div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Floating Overlay (Desktop) -->
-<div class="absolute -right-12 top-20 z-30 animate-float-slow hidden lg:block">
-<div class="absolute -left-48 top-4 flex items-center gap-3 animate-pulse">
-<span class="text-slate-400 font-handwriting text-sm bg-white dark:bg-slate-800 px-3 py-1 rounded-lg border border-slate-200 shadow-sm">
+                            <div class="mt-4 flex justify-center">
+                                <button class="px-5 py-2.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-white/60 dark:border-slate-700 rounded-full shadow-lg flex items-center gap-3">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></div>
+                                    <span class="text-slate-700 dark:text-slate-300 font-bold text-xs tracking-wide">LISTENING... 00:42</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="h-32 flex-none flex gap-6 px-8 pb-8 z-20 flex items-end">
+                        <div class="glass-card flex-1 p-3 flex flex-col justify-end h-full">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1.5">24h Timeline</div>
+                            <div class="flex items-end justify-between gap-1 h-full w-full px-1">
+                                <div class="h-6 w-1.5 bg-slate-300/50 rounded-full"></div>
+                                <div class="h-8 w-1.5 bg-slate-300/50 rounded-full"></div>
+                                <div class="h-12 w-1.5 bg-amber-400 rounded-full opacity-80 animate-pulse"></div>
+                                <div class="h-10 w-1.5 bg-slate-300/50 rounded-full"></div>
+                                <div class="h-16 w-3 ring-2 ring-slate-400 ring-offset-2 rounded-full overflow-hidden flex flex-col-reverse bg-slate-100">
+                                    <div class="h-[60%] bg-amber-400 w-full"></div>
+                                    <div class="h-[40%] bg-blue-400 w-full"></div>
+                                </div>
+                                <div class="h-6 w-1.5 bg-slate-300/50 rounded-full"></div>
+                                <div class="h-1.5 w-1.5 bg-slate-200 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="glass-card w-64 p-3 h-full flex flex-col justify-between">
+                            <div class="flex justify-between items-center mb-1">
+                                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Mood</div>
+                                <div class="text-[9px] text-emerald-600 font-bold bg-emerald-100 px-1.5 rounded-full">Top 3</div>
+                            </div>
+                            <div class="space-y-1.5 flex-1">
+                                <div>
+                                    <div class="flex justify-between text-[9px] mb-0.5 text-slate-500 font-medium"><span>Happy</span><span>65%</span></div>
+                                    <div class="w-full bg-slate-200 h-1 rounded-full overflow-hidden"><div class="h-full bg-amber-400 w-[65%]"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[9px] mb-0.5 text-slate-500 font-medium"><span>Focus</span><span>25%</span></div>
+                                    <div class="w-full bg-slate-200 h-1 rounded-full overflow-hidden"><div class="h-full bg-blue-400 w-[25%]"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Overlay (Desktop) -->
+            <div class="absolute -right-12 top-20 z-30 animate-float-slow hidden lg:block">
+                 <div class="absolute -left-48 top-4 flex items-center gap-3 animate-pulse">
+                    <span class="text-slate-400 font-handwriting text-sm bg-white dark:bg-slate-800 px-3 py-1 rounded-lg border border-slate-200 shadow-sm">
                         Click here or press <span class="font-bold text-slate-700 dark:text-white border px-1 rounded">Alt + S</span>
-</span>
-<i class="fa-solid fa-arrow-right-long text-slate-400 text-xl"></i>
-</div>
-<div class="relative flex items-center px-1.5 py-1.5 rounded-full transition-all duration-500 bg-[#1a1a1a]/95 shadow-[0_0_15px_0px_rgba(244,63,94,0.5)] transform scale-125 cursor-pointer hover:scale-[1.35]">
-<div class="pl-2 pr-1 flex items-center justify-center h-full min-h-[32px]">
-<div class="flex flex-col gap-[3px] p-1">
-<div class="w-1 h-1 rounded-full bg-white/50"></div>
-<div class="w-1 h-1 rounded-full bg-white/50"></div>
-<div class="w-1 h-1 rounded-full bg-white/50"></div>
-</div>
-</div>
-<div class="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-rose-500">
-<div class="absolute inset-0 rounded-full animate-ping-slow bg-white/20"></div>
-<div class="flex items-center gap-[2px] h-5 overflow-hidden z-10">
-<div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0s"></div>
-<div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.1s"></div>
-<div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.2s"></div>
-<div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.15s"></div>
-</div>
-</div>
-<div class="w-[1px] h-5 mx-1 rounded-full bg-white/10"></div>
-<div class="w-8 h-8 rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-gear text-sm"></i></div>
-</div>
-</div>
-</div>
-</section>
-<!-- Features Bento Grid -->
-<section class="py-32 bg-white/50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 backdrop-blur-sm" id="features">
-<div class="max-w-7xl mx-auto px-4 text-center mb-20 reveal">
-<h2 class="text-4xl md:text-5xl font-bold mb-6 font-serif">不只是转写，<br/>更是<span class="text-gradient">全方位的语音智能</span></h2>
-<p class="text-slate-500 text-xl">Freely 集成多种前沿 AI 模型，将您的声音转化为结构化的知识与情感数据。</p>
-</div>
-<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="md:col-span-2 feature-card bg-slate-50/80 dark:bg-slate-900/80 rounded-[2rem] p-10 relative overflow-hidden group border border-slate-100 dark:border-slate-800 reveal backdrop-blur-sm">
-<div class="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10"><i class="fas fa-bolt text-9xl"></i></div>
-<div class="relative z-10">
-<div class="icon-bg w-16 h-16 rounded-2xl bg-brand-600 text-white flex items-center justify-center text-3xl mb-8 shadow-lg shadow-brand-500/30"><i class="fas fa-bolt"></i></div>
-<h3 class="text-3xl font-bold mb-4">毫秒级实时响应</h3>
-<p class="text-slate-500 text-lg mb-8">无需联网，本地模型提供极致速度与隐私保护。</p>
-</div>
-</div>
-<div class="row-span-2 feature-card bg-slate-900 text-white rounded-[2rem] p-10 relative overflow-hidden group reveal">
-<div class="absolute inset-0 bg-gradient-to-b from-slate-900 to-brand-900 opacity-90"></div>
-<div class="relative z-10 h-full flex flex-col">
-<div class="icon-bg w-16 h-16 rounded-2xl bg-brand-500 text-white flex items-center justify-center text-3xl mb-8"><i class="fas fa-fingerprint"></i></div>
-<h3 class="text-3xl font-bold mb-4">声音资产化</h3>
-<p class="text-slate-400 text-lg mb-auto">构建您的个人语音数据库。</p>
-<div class="mt-8 h-40 flex items-end justify-between space-x-1 opacity-50">
-<div class="w-2 bg-brand-400 h-[60%] rounded-t animate-pulse"></div>
-<div class="w-2 bg-brand-400 h-[90%] rounded-t animate-pulse"></div>
-</div>
-</div>
-</div>
-<div class="feature-card bg-slate-50/80 dark:bg-slate-900/80 rounded-[2rem] p-10 border border-slate-100 group reveal backdrop-blur-sm">
-<div class="icon-bg w-14 h-14 rounded-2xl bg-accent-500 text-white flex items-center justify-center text-2xl mb-6 shadow-accent-500/30"><i class="fas fa-heart-pulse"></i></div>
-<h3 class="text-2xl font-bold mb-3">情感计算</h3>
-<p class="text-slate-500">感知语气中的快乐、焦虑或平静。</p>
-</div>
-<div class="feature-card bg-emerald-50/80 dark:bg-emerald-900/20 rounded-[2rem] p-10 border border-emerald-100 dark:border-emerald-800 group reveal backdrop-blur-sm">
-<div class="icon-bg w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-2xl mb-6 shadow-emerald-500/30"><i class="fas fa-shield-halved"></i></div>
-<h3 class="text-2xl font-bold mb-3 text-emerald-900 dark:text-emerald-400">隐私安全</h3>
-<p class="text-emerald-700/80 dark:text-emerald-300/70">所有数据本地运行，完全离线，绝无上传。</p>
-</div>
-</div>
-</section>
-<!-- Download & Contact -->
-<section class="py-20 bg-slate-50/50 dark:bg-black/50 relative border-t border-slate-100 dark:border-slate-800" id="download">
-<div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row gap-8 relative z-10">
-<div class="flex-1 bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl flex flex-col justify-between group hover:-translate-y-1 transition-transform border border-slate-100">
-<div><i class="fa-brands fa-windows text-6xl text-brand-600 mb-6"></i>
-<h3 class="text-3xl font-bold mb-2 dark:text-white">Windows</h3>
-<p class="text-slate-500 mb-8">v1.0.0 正式版</p>
-</div>
-<a class="w-full py-4 rounded-xl bg-slate-900 text-white font-bold hover:bg-brand-600 transition-colors shadow-lg flex items-center justify-center gap-2" href="https://gitee.com/fzfz666/freely/raw/master/Freely_0.1.3_x64-setup.exe">
-<i class="fa-solid fa-download"></i> 免费下载 (.exe)
+                    </span>
+                    <i class="fa-solid fa-arrow-right-long text-slate-400 text-xl"></i>
+                </div>
+                <div class="relative flex items-center px-1.5 py-1.5 rounded-full transition-all duration-500 bg-[#1a1a1a]/95 shadow-[0_0_15px_0px_rgba(244,63,94,0.5)] transform scale-125 cursor-pointer hover:scale-[1.35]">
+                    <div class="pl-2 pr-1 flex items-center justify-center h-full min-h-[32px]">
+                        <div class="flex flex-col gap-[3px] p-1">
+                            <div class="w-1 h-1 rounded-full bg-white/50"></div>
+                            <div class="w-1 h-1 rounded-full bg-white/50"></div>
+                            <div class="w-1 h-1 rounded-full bg-white/50"></div>
+                        </div>
+                    </div>
+                    <div class="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-rose-500">
+                        <div class="absolute inset-0 rounded-full animate-ping-slow bg-white/20"></div>
+                        <div class="flex items-center gap-[2px] h-5 overflow-hidden z-10">
+                            <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0s"></div>
+                            <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.1s"></div>
+                            <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.2s"></div>
+                            <div class="w-[2px] rounded-full animate-wave bg-white" style="animation-delay: 0.15s"></div>
+                        </div>
+                    </div>
+                    <div class="w-[1px] h-5 mx-1 rounded-full bg-white/10"></div>
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-gear text-sm"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bento Grid -->
+    <section id="features" class="py-32 bg-white/50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-20 reveal">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 font-serif">不只是转写，<br>更是<span class="text-gradient">全方位的语音智能</span></h2>
+            <p class="text-slate-500 text-xl">Freely 集成多种前沿 AI 模型，将您的声音转化为结构化的知识与情感数据。</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-2 feature-card bg-slate-50/80 dark:bg-slate-900/80 rounded-[2rem] p-10 relative overflow-hidden group border border-slate-100 dark:border-slate-800 reveal backdrop-blur-sm">
+                <div class="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10"><i class="fas fa-bolt text-9xl"></i></div>
+                <div class="relative z-10">
+                    <div class="icon-bg w-16 h-16 rounded-2xl bg-brand-600 text-white flex items-center justify-center text-3xl mb-8 shadow-lg shadow-brand-500/30"><i class="fas fa-bolt"></i></div>
+                    <h3 class="text-3xl font-bold mb-4">毫秒级实时响应</h3>
+                    <p class="text-slate-500 text-lg mb-8">无需联网，本地模型提供极致速度与隐私保护。</p>
+                </div>
+            </div>
+            <div class="row-span-2 feature-card bg-slate-900 text-white rounded-[2rem] p-10 relative overflow-hidden group reveal">
+                <div class="absolute inset-0 bg-gradient-to-b from-slate-900 to-brand-900 opacity-90"></div>
+                <div class="relative z-10 h-full flex flex-col">
+                    <div class="icon-bg w-16 h-16 rounded-2xl bg-brand-500 text-white flex items-center justify-center text-3xl mb-8"><i class="fas fa-fingerprint"></i></div>
+                    <h3 class="text-3xl font-bold mb-4">声音资产化</h3>
+                    <p class="text-slate-400 text-lg mb-auto">构建您的个人语音数据库。</p>
+                    <div class="mt-8 h-40 flex items-end justify-between space-x-1 opacity-50">
+                        <div class="w-2 bg-brand-400 h-[60%] rounded-t animate-pulse"></div>
+                        <div class="w-2 bg-brand-400 h-[90%] rounded-t animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card bg-slate-50/80 dark:bg-slate-900/80 rounded-[2rem] p-10 border border-slate-100 group reveal backdrop-blur-sm">
+                <div class="icon-bg w-14 h-14 rounded-2xl bg-accent-500 text-white flex items-center justify-center text-2xl mb-6 shadow-accent-500/30"><i class="fas fa-heart-pulse"></i></div>
+                <h3 class="text-2xl font-bold mb-3">情感计算</h3>
+                <p class="text-slate-500">感知语气中的快乐、焦虑或平静。</p>
+            </div>
+            <div class="feature-card bg-emerald-50/80 dark:bg-emerald-900/20 rounded-[2rem] p-10 border border-emerald-100 dark:border-emerald-800 group reveal backdrop-blur-sm">
+                <div class="icon-bg w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-2xl mb-6 shadow-emerald-500/30"><i class="fas fa-shield-halved"></i></div>
+                <h3 class="text-2xl font-bold mb-3 text-emerald-900 dark:text-emerald-400">隐私安全</h3>
+                <p class="text-emerald-700/80 dark:text-emerald-300/70">所有数据本地运行，完全离线，绝无上传。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download & Contact -->
+    <section id="download" class="py-20 bg-slate-50/50 dark:bg-black/50 relative border-t border-slate-100 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row gap-8 relative z-10">
+            <div class="flex-1 bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl flex flex-col justify-between group hover:-translate-y-1 transition-transform border border-slate-100">
+                <div><i class="fa-brands fa-windows text-6xl text-brand-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-2 dark:text-white">Windows</h3>
+                    <p class="text-slate-500 mb-8">v1.0.0 正式版</p>
+                </div>
+                <a href="https://gitee.com/fzfz666/freely/raw/master/Freely_0.1.3_x64-setup.exe" class="w-full py-4 rounded-xl bg-slate-900 text-white font-bold hover:bg-brand-600 transition-colors shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> 免费下载 (.exe)
                 </a>
-</div>
-<div class="flex-1 bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-3xl shadow-xl text-white flex flex-col items-center justify-center text-center">
-<h3 class="text-2xl font-bold mb-2">加入内测群</h3>
-<p class="text-slate-400 text-sm mb-4">参与软件贡献，你提建议我来实现</p>
-<div class="bg-white p-2 rounded-xl w-40 h-40 flex items-center justify-center mb-6 overflow-hidden">
-<img alt="WeChat QR Code" class="w-full h-full object-contain" src="assets\wechat.jpg"/>
-</div>
-<p class="text-xs text-slate-500">扫码直连开发者</p>
-</div>
-</div>
-</section>
-<!-- Founder Chat Widget -->
-<div class="fixed bottom-6 right-4 z-50 group founder-chat-widget flex flex-col items-end">
-<div class="mb-3 bg-white dark:bg-slate-800 px-4 py-3 rounded-2xl rounded-tr-sm shadow-xl shadow-brand-900/10 border border-slate-100 dark:border-slate-700 transform transition-all duration-300 origin-bottom-right scale-100 w-48">
-<p class="text-xs font-bold text-brand-600 dark:text-brand-400 mb-1">👋 直接对话创始人</p>
-<p class="text-xs text-slate-600 dark:text-slate-300 leading-tight">参与内测，你提建议我实现！</p>
-</div>
-<div class="relative cursor-pointer transition-transform hover:scale-105 active:scale-95">
-<div class="absolute inset-0 bg-brand-500 rounded-full animate-ping opacity-20"></div>
-<div class="w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-white dark:border-slate-800 shadow-2xl overflow-hidden bg-white relative z-10">
-<img alt="Chat" class="w-full h-full object-cover" src="assets\wechat.jpg"/>
-</div>
-<div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full z-20"></div>
-</div>
-<div class="absolute bottom-20 right-0 bg-white p-2 rounded-xl shadow-2xl border border-slate-100 transform translate-y-10 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 origin-bottom-right w-40 h-40 z-50 pointer-events-none group-hover:pointer-events-auto">
-<img alt="QR" class="w-full h-full object-contain" src="assets\wechat.jpg"/>
-</div>
-</div>
-<footer class="py-12 text-center text-slate-500 text-sm bg-white dark:bg-slate-950 border-t border-slate-100 relative z-10">
-<div class="max-w-7xl mx-auto flex justify-between px-6">
-<div class="font-bold">Freely.</div>
-<div>© 2025 Freely. All rights reserved.</div>
-</div>
-</footer>
-<script>
+            </div>
+
+            <div class="flex-1 bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-3xl shadow-xl text-white flex flex-col items-center justify-center text-center">
+                <h3 class="text-2xl font-bold mb-2">加入内测群</h3>
+                <p class="text-slate-400 text-sm mb-4">参与软件贡献，你提建议我来实现</p>
+                <div class="bg-white p-2 rounded-xl w-40 h-40 flex items-center justify-center mb-6 overflow-hidden">
+                    <img src="https://gitee.com/fzfz666/freely/raw/master/wechat.jpg" alt="WeChat QR Code" class="w-full h-full object-contain">
+                </div>
+                <p class="text-xs text-slate-500">扫码直连开发者</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Chat Widget -->
+    <div class="fixed bottom-6 right-4 z-50 group founder-chat-widget flex flex-col items-end">
+        <div class="mb-3 bg-white dark:bg-slate-800 px-4 py-3 rounded-2xl rounded-tr-sm shadow-xl shadow-brand-900/10 border border-slate-100 dark:border-slate-700 transform transition-all duration-300 origin-bottom-right scale-100 w-48">
+            <p class="text-xs font-bold text-brand-600 dark:text-brand-400 mb-1">👋 直接对话创始人</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-tight">参与内测，你提建议我实现！</p>
+        </div>
+        <div class="relative cursor-pointer transition-transform hover:scale-105 active:scale-95">
+             <div class="absolute inset-0 bg-brand-500 rounded-full animate-ping opacity-20"></div>
+             <div class="w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-white dark:border-slate-800 shadow-2xl overflow-hidden bg-white relative z-10">
+                <img src="https://gitee.com/fzfz666/freely/raw/master/wechat.jpg" alt="Chat" class="w-full h-full object-cover">
+             </div>
+             <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full z-20"></div>
+        </div>
+        <div class="absolute bottom-20 right-0 bg-white p-2 rounded-xl shadow-2xl border border-slate-100 transform translate-y-10 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 origin-bottom-right w-40 h-40 z-50 pointer-events-none group-hover:pointer-events-auto">
+            <img src="https://gitee.com/fzfz666/freely/raw/master/wechat.jpg" alt="QR" class="w-full h-full object-contain">
+        </div>
+    </div>
+
+    <footer class="py-12 text-center text-slate-500 text-sm bg-white dark:bg-slate-950 border-t border-slate-100 relative z-10">
+        <div class="max-w-7xl mx-auto flex justify-between px-6">
+            <div class="font-bold">Freely.</div>
+            <div>&copy; 2025 Freely. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
         // --- 1. 全屏粒子网络逻辑 ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
