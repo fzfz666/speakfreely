@@ -6,7 +6,7 @@
     },
     "update": {
         "version_code": 106,
-        "latest_version": "0.0.0",
+        "latest_version": "0.2.1",
         "force_update": false,
         "download_url": "https://github.com/fzfz666/speakfreely/raw/refs/heads/main/Freely_0.2.1_x64-setup.exe",
         "changelog": "✨ 全新 v0.2.1\n\n- 🎨 全新的“奇妙 3D” UI 设计\n- 🚀 笔记功能\n- 🎙️ 改进了语音情感分析\n- 🐛 修复了录音自动停止的问题\n- 📝 ,
