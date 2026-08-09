@@ -2,25 +2,25 @@
     "global": {
         "app_status": "normal",
         "maintenance_msg": "服务器正在进行预定维护。请在 30 分钟后重试。",
-        "api_base_url": "https://gitee.com/v1"
+        "api_base_url": "https://api.freeshuo.com/v1"
     },
     "update": {
-        "version_code": 103,
-        "latest_version": "0.1.2",
+        "version_code": 106,
+        "latest_version": "0.0.0",
         "force_update": false,
-        "download_url": "https://gitee.com/fzfz666/freely/raw/master/Freely_0.1.2_x64-setup.exe",
-        "changelog": "✨ 更新 v0.1.3\n\n- 🎨 若干更新\n- 🚀 为新用户添加了更详细新手引导流程\n- 🎙️ 改进了语音分析速度\n- 🐛 点击按钮说话也能输字啦\n- 📝 完善其他功能",
+        "download_url": "https://github.com/fzfz666/speakfreely/raw/refs/heads/main/Freely_0.2.1_x64-setup.exe",
+        "changelog": "✨ 全新 v0.2.1\n\n- 🎨 全新的“奇妙 3D” UI 设计\n- 🚀 笔记功能\n- 🎙️ 改进了语音情感分析\n- 🐛 修复了录音自动停止的问题\n- 📝 ,
         "remind_limit": 3
     },
     "announcements": [
         {
-            "id": 2023112802,
-            "enable": true,
-            "title": "🎉 欢迎来到内测版本！打字效率up!up!",
-            "content": "首次使用告知：经过我们实际测试使用本软件可以让你打字速度提升7倍以上! \n😄这是我们的第一个内测版本。按下 Alt+S 即可开始录音！ \n🚀更换快捷键可在设置里更换。 \n🐛此软件语音功能永久免费~ \n✨上述图片为wechat反馈群，无广告纯交流反馈。真挚的邀请大家进入反馈群，提出你的建议和更多人探讨好用的功能，提出有效建议、赞助者可以加入软件贡献名单中哦~为避免干扰试用，此加群截图后续不会在公告中显示，可以在设置当中找到。\n✨让我们一起为这个软件添砖加瓦，一起变得更好~",
-            "image_url": "https://gitee.com/fzfz666/1735d23712043f6851fe939dde5c0051bcc6b9be/raw/master/wechat2.png",
-            "link_url": "https://baidu.com",
-            "max_show_count": 1,
+            "id": 2023112801,
+            "enable": false,
+            "title": "🎉 欢迎来到奇妙版本！",
+            "content": "我们已经彻底重新设计了 FreeShuo，使其更加沉浸和智能。快来看看会对你的声音做出反应的全新 **情感化身**！\n\n随时按下 Alt+S 即可开始录音！",
+            "image_url": "",
+            "link_url": "https://github.com/fzfz666/freeshuo/blob/main/README.md",
+            "max_show_count": 5,
             "placement": "home"
         },
         {
@@ -29,17 +29,17 @@
             "title": "尝试校正工作室",
             "content": "使用 AI 完美润色你的转录内容。现在支持语法修正与风格润色。",
             "image_url": "",
-            "link_url": "https://huluxia.com",
+            "link_url": "https://github.com/fzfz666/freeshuo",
             "max_show_count": 5,
             "placement": "correction"
         }
     ],
     "ads": [
         {
-            "enable": false,
+            "enable": true,
             "image_url": "https://gitee.com/fzfz666/1735d23712043f6851fe939dde5c0051bcc6b9be/raw/master/ad.png",
-            "text": "🚀 使用 Freely 提升你的效率！",
-            "click_url": "https://huluxia.com",
+            "text": "🚀 使用 FreeShuo Pro 提升你的效率！设置中扫码加群和开发者对话。",
+            "click_url": "https://gitee.com",
             "expire_date": "2025-12-31",
             "placement": "home"
         },
@@ -47,14 +47,14 @@
             "enable": true,
             "image_url": "https://gitee.com/fzfz666/1735d23712043f6851fe939dde5c0051bcc6b9be/raw/master/ad2.png",
             "text": "📝 专业版校正功能：更精准的语法分析。",
-            "click_url": "https://baidu.com",
+            "click_url": "https://gitee.com",
             "expire_date": "2025-12-31",
             "placement": "correction"
         }
     ],
     "contact": {
         "group_num": "直接扫码加微信群",
-        "qr_url": "https://gitee.com/fzfz666/1735d23712043f6851fe939dde5c0051bcc6b9be/raw/master/wechat.jpg",
+        "qr_url": "https://gitee.com/fzfz666/1735d23712043f6851fe939dde5c0051bcc6b9be/raw/master/wechat12.jpg",
         "join_link": "https://gitee.com"
     },
     "models": [
@@ -62,6 +62,7 @@
             "id": "sensevoice-model",
             "filename": "sensevoice/model.onnx",
             "url": "https://modelscope.cn/models/xiaowangge/sherpa-onnx-sense-voice-small/resolve/master/model.onnx",
+            "url2": "https://huggingface.co/csukuangfj/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/resolve/main/model.onnx",
             "md5": "",
             "required": true
         },
@@ -69,6 +70,7 @@
             "id": "sensevoice-tokens",
             "filename": "sensevoice/tokens.txt",
             "url": "https://modelscope.cn/models/xiaowangge/sherpa-onnx-sense-voice-small/resolve/master/tokens.txt",
+            "url2": "https://huggingface.co/csukuangfj/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/resolve/main/tokens.txt",
             "md5": "",
             "required": true
         },
@@ -76,6 +78,7 @@
             "id": "vad-model",
             "filename": "vad/model.onnx",
             "url": "https://gitee.com/fzfz666/1735d23712043f6851fe939dde5c0051bcc6b9be/raw/master/model.onnx",
+            "url2": "https://github.com/snakers4/silero-vad/raw/master/src/silero_vad/data/silero_vad.onnx",
             "md5": "",
             "required": true
         }
@@ -86,7 +89,7 @@
         "holiday_theme": false,
         "enable_ai_correction": true,
         "correction_unlock_criteria": {
-            "min_minutes": 120,
+            "min_minutes": 0,
             "min_days": 5
         },
         "analytics_config": {
@@ -96,21 +99,18 @@
                 "la51": "detailed",
                 "aptabase": "simple"
             }
-        }
+        },
+        "avatar_unlock_all": true
     },
     "feedback": {
         "enable": true,
         "text": "报告 Bug / 请求新功能",
-        "url": "https://gitee.com/fzfz666/freeshuo/issues"
+        "url": "https://github.com/fzfz666/freeshuo/issues"
     },
     "faq": [
         {
-            "q": "缓存占用太大？",
-            "a": "由于使用的是高准确率模型所以可能占用内存较大。如果愿意牺牲部分精度，可以换小模型~具体教程可以在群里问一下。"
-        },
-        {
             "q": "如何使用全局快捷键？",
-            "a": "在任何地方按下 Alt+S 即可切换录音。按下 Alt+D 捕获选中的文本。也可在配置中直接更换快捷键。目前暂不支持win键~"
+            "a": "在任何地方按下 Alt+S 即可切换录音。按下 Alt+D 捕获选中的文本。"
         },
         {
             "q": "我的录音保存在哪里？",
@@ -118,7 +118,8 @@
         },
         {
             "q": "我的语音数据隐私安全吗？",
-            "a": "是的！Freely 使用本地 AI 模型离线处理所有内容。"
+            "a": "是的！FreeShuo 使用本地 AI 模型离线处理所有内容。"
         }
     ]
+
 }
