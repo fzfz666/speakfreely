@@ -8,7 +8,7 @@
         "version_code": 108,
         "latest_version": "0.2.3",
         "force_update": false,
-        "download_url": "https://gitee.com/fzfz666/freely/raw/master/Freely_0.2.3_x64-setup.exe",
+        "download_url": "https://raw.githubusercontent.com/fzfz666/speakfreely/refs/heads/main/Freely_0.2.3_x64-setup.exe",
         "changelog": "修复若干 Bug，强烈推荐更新。",
         "remind_limit": 3
     },
